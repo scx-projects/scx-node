@@ -1,5 +1,9 @@
 package dev.scx.node.view;
 
+/// FloatView
+///
+/// @author scx567888
+/// @version 0.0.1
 public interface FloatView {
 
     /// 转换为 float (允许丢失精度)
