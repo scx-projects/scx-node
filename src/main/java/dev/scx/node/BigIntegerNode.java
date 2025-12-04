@@ -77,6 +77,11 @@ public record BigIntegerNode(BigInteger value) implements NumberNode, NumberView
     }
 
     @Override
+    public BigInteger asBigIntegerExact() {
+        return value;
+    }
+
+    @Override
     public BigDecimal asBigDecimal() {
         return new BigDecimal(value);
     }
