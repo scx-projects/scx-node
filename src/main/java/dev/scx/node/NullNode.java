@@ -20,6 +20,7 @@ public final class NullNode implements Node {
 
     @Override
     public String toString() {
+        // 采用 JSON 格式
         return "null";
     }
 
