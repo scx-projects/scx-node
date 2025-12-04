@@ -23,10 +23,6 @@ public final class BooleanNode implements ValueNode, NumberView, StringView, Boo
         this.value = value;
     }
 
-    public static BooleanNode of(boolean v) {
-        return v ? TRUE : FALSE;
-    }
-
     public boolean value() {
         return value;
     }
@@ -37,7 +33,7 @@ public final class BooleanNode implements ValueNode, NumberView, StringView, Boo
     }
 
     @Override
-    public int asIntExact() throws NumberFormatException, ArithmeticException {
+    public int asIntExact() {
         return value ? 1 : 0;
     }
 
@@ -47,7 +43,7 @@ public final class BooleanNode implements ValueNode, NumberView, StringView, Boo
     }
 
     @Override
-    public long asLongExact() throws NumberFormatException, ArithmeticException {
+    public long asLongExact() {
         return value ? 1L : 0L;
     }
 
@@ -57,7 +53,7 @@ public final class BooleanNode implements ValueNode, NumberView, StringView, Boo
     }
 
     @Override
-    public float asFloatExact() throws NumberFormatException, ArithmeticException {
+    public float asFloatExact() {
         return value ? 1.0F : 0.0F;
     }
 
@@ -67,7 +63,7 @@ public final class BooleanNode implements ValueNode, NumberView, StringView, Boo
     }
 
     @Override
-    public double asDoubleExact() throws NumberFormatException, ArithmeticException {
+    public double asDoubleExact() {
         return value ? 1.0D : 0.0D;
     }
 
@@ -77,7 +73,7 @@ public final class BooleanNode implements ValueNode, NumberView, StringView, Boo
     }
 
     @Override
-    public BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException {
+    public BigInteger asBigIntegerExact() {
         return value ? BigInteger.ONE : BigInteger.ZERO;
     }
 
