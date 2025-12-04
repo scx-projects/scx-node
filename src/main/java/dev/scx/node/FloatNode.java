@@ -10,7 +10,7 @@ import java.math.BigInteger;
 /// FloatNode
 ///
 /// ### 关于 equals 重写问题:
-/// 浮点比较涉及 ±0.0 和 NaN 的特殊语义, 为了保证 equals 行为一致, 通常需要使用 Float.compare.
+/// 浮点比较涉及 ±0.0 和 NaN 的特殊语义, 为了保证 equals 行为一致, 通常需要使用 [Float#compare(float, float)].
 /// 但按照 [Record#equals(Object)] 的方法约定, 其底层恰好采用了 这种判断逻辑, 因此我们无需手动重写 equals.
 ///
 /// @author scx567888
