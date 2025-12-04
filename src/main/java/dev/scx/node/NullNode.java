@@ -13,7 +13,6 @@ public final class NullNode implements Node {
 
     }
 
-    /// NullNode 是单例的 返回 this 即可
     @Override
     public NullNode deepCopy() {
         return this;
