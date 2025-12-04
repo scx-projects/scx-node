@@ -7,11 +7,11 @@ import org.testng.annotations.Test;
 public class NodeTest {
 
     public static void main(String[] args) throws Throwable {
-        test1();
+        testInt();
     }
 
     @Test
-    public static void test1() {
+    public static void testInt() {
 
         var n1 = new IntNode(5678);
         var n2 = new IntNode(5678);
