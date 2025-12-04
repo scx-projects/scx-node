@@ -20,8 +20,8 @@ public record LongNode(long value) implements NumberNode, NumberView, StringView
 
     @Override
     public int asIntExact() throws ArithmeticException {
-        if ((int) value != value) {
-            throw new ArithmeticException("integer overflow");
+        if ((long) (int) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
         }
         return (int) value;
     }
@@ -43,8 +43,8 @@ public record LongNode(long value) implements NumberNode, NumberView, StringView
 
     @Override
     public float asFloatExact() throws ArithmeticException {
-        if ((float) value != value) {
-            throw new ArithmeticException("integer overflow");
+        if ((long) (float) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
         }
         return (float) value;
     }
@@ -56,8 +56,8 @@ public record LongNode(long value) implements NumberNode, NumberView, StringView
 
     @Override
     public double asDoubleExact() throws ArithmeticException {
-        if ((double) value != value) {
-            throw new ArithmeticException("integer overflow");
+        if ((long) (double) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
         }
         return (double) value;
     }
@@ -68,7 +68,7 @@ public record LongNode(long value) implements NumberNode, NumberView, StringView
     }
 
     @Override
-    public BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException {
+    public BigInteger asBigIntegerExact() {
         return BigInteger.valueOf(value);
     }
 
