@@ -111,9 +111,9 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
 
             // 添加 值
             if (element instanceof ArrayNode arrayNode) {
-                sb.append(arrayNode.toString0(index));
+                sb.append(arrayNode.toString0(indentLevel + 1));
             }else if (element instanceof ObjectNode objectNode) {
-                sb.append(objectNode.toString0(index));
+                sb.append(objectNode.toString0(indentLevel + 1));
             }else {
                 sb.append(element.toString());
             }
@@ -125,7 +125,9 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
             sb.append("\n");
             index = index + 1;
         }
-
+        // 当前层缩进
+        sb.append("  ".repeat(indentLevel));
+        // 尾部
         sb.append("]");
         return sb.toString();
     }
