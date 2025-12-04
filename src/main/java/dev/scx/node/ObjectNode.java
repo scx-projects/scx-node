@@ -83,7 +83,36 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
 
     @Override
     public String toString() {
-        return fields.toString();
+        // 采用 JSON 格式
+        // 这里假设 ObjectNode 不存在自引用
+        if (fields.isEmpty()) {
+            return "{}";
+        }
+
+        var sb = new StringBuilder();
+        sb.append("{\n");
+
+        var size = fields.size();
+        var index = 0;
+        for (var field : fields.entrySet()) {
+            // 每个元素缩进 2 个空格
+            sb.append("  ");
+            // 添加 key
+            sb.append("\"").append(field.getKey()).append("\"");
+            // 添加分隔符
+            sb.append(": ");
+            // 添加 值
+            sb.append(field.getValue().toString());
+            // 如果不是最后一个元素, 加逗号
+            if (index != size - 1) {
+                sb.append(",");
+            }
+            sb.append("\n");
+            index = index + 1;
+        }
+
+        sb.append("}");
+        return sb.toString();
     }
 
 }
