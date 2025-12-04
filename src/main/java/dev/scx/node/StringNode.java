@@ -1,5 +1,9 @@
 package dev.scx.node;
 
+import dev.scx.node.view.BooleanView;
+import dev.scx.node.view.NumberView;
+import dev.scx.node.view.StringView;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -7,7 +11,7 @@ import java.math.BigInteger;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public record StringNode(String value) implements ValueNode {
+public record StringNode(String value) implements ValueNode, NumberView, StringView, BooleanView {
 
     public StringNode {
         if (value == null) {
@@ -21,7 +25,17 @@ public record StringNode(String value) implements ValueNode {
     }
 
     @Override
+    public int asIntExact() throws NumberFormatException {
+        return Integer.parseInt(value);
+    }
+
+    @Override
     public long asLong() throws NumberFormatException {
+        return Long.parseLong(value);
+    }
+
+    @Override
+    public long asLongExact() throws NumberFormatException {
         return Long.parseLong(value);
     }
 
@@ -31,7 +45,17 @@ public record StringNode(String value) implements ValueNode {
     }
 
     @Override
+    public float asFloatExact() throws NumberFormatException {
+        return Float.parseFloat(value);
+    }
+
+    @Override
     public double asDouble() throws NumberFormatException {
+        return Double.parseDouble(value);
+    }
+
+    @Override
+    public double asDoubleExact() throws NumberFormatException {
         return Double.parseDouble(value);
     }
 
@@ -55,7 +79,6 @@ public record StringNode(String value) implements ValueNode {
         return Boolean.parseBoolean(value);
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public StringNode deepCopy() {
         return this;
