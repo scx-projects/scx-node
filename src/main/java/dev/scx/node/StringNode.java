@@ -97,7 +97,9 @@ public record StringNode(String value) implements ValueNode {
 
     @Override
     public String toString() {
-        return asString();
+        // 采用 JSON 格式
+        // todo 这里没有处理转义
+        return "\"" + value + "\"";
     }
 
 }
