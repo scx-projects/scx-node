@@ -7,7 +7,7 @@ import java.math.BigInteger;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public interface NumberView extends   BigDecimalView {
+public interface NumberView {
 
     /// 转换为 int (允许丢失精度)
     ///
@@ -68,5 +68,13 @@ public interface NumberView extends   BigDecimalView {
     ///
     /// @throws NumberFormatException 数字格式不正确
     BigDecimal asBigDecimal() throws NumberFormatException;
+
+    /// 转换为 String
+    String asString();
+
+    /// 转换为 boolean
+    /// - 数字类型 : value != 0
+    /// - 字符串类型 : "true".equalsIgnoreCase(s)
+    boolean asBoolean();
 
 }
