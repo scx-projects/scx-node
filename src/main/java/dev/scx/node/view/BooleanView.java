@@ -7,6 +7,8 @@ package dev.scx.node.view;
 public interface BooleanView {
 
     /// 转换为 boolean
+    /// - 数字类型 : value != 0
+    /// - 字符串类型 : "true".equalsIgnoreCase(s)
     boolean asBoolean();
 
 }
