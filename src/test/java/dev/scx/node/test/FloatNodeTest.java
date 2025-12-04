@@ -1,11 +1,8 @@
 package dev.scx.node.test;
 
 import dev.scx.node.FloatNode;
-import dev.scx.node.IntNode;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.math.BigInteger;
 
 public class FloatNodeTest {
 
@@ -53,15 +50,15 @@ public class FloatNodeTest {
         var n = new FloatNode(Float.MIN_VALUE + 1.01F);
 
         n.asInt();
-        Assert.assertThrows(ArithmeticException.class,n::asIntExact);
+        Assert.assertThrows(ArithmeticException.class, n::asIntExact);
         n.asLong();
-        Assert.assertThrows(ArithmeticException.class,n::asLongExact);
+        Assert.assertThrows(ArithmeticException.class, n::asLongExact);
         n.asFloat();
         n.asFloatExact();
         n.asDouble();
         n.asDoubleExact();
         n.asBigInteger();
-        Assert.assertThrows(ArithmeticException.class,n::asBigIntegerExact);
+        Assert.assertThrows(ArithmeticException.class, n::asBigIntegerExact);
         n.asBigDecimal();
         n.asString();
         n.asBoolean();
