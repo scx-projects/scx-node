@@ -77,6 +77,11 @@ public final class BooleanNode implements ValueNode, NumberView, StringView, Boo
     }
 
     @Override
+    public BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException {
+        return value ? BigInteger.ONE : BigInteger.ZERO;
+    }
+
+    @Override
     public BigDecimal asBigDecimal() {
         return value ? BigDecimal.ONE : BigDecimal.ZERO;
     }
