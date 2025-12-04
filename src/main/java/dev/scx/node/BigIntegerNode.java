@@ -46,6 +46,7 @@ public record BigIntegerNode(BigInteger value) implements NumberNode, NumberView
 
     @Override
     public float asFloatExact() throws ArithmeticException {
+        // todo 有问题
         var f = value.floatValue();
         if (!BigDecimal.valueOf(f).toBigInteger().equals(value)) {
             throw new ArithmeticException("Precision loss: " + value);
@@ -60,6 +61,7 @@ public record BigIntegerNode(BigInteger value) implements NumberNode, NumberView
 
     @Override
     public double asDoubleExact() throws ArithmeticException {
+        // todo 有问题
         var d = value.doubleValue();
         if (!BigDecimal.valueOf(d).toBigInteger().equals(value)) {
             throw new ArithmeticException("Precision loss: " + value);
