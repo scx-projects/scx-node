@@ -21,22 +21,22 @@ public record StringNode(String value) implements ValueNode, NumberView, StringV
 
     @Override
     public int asInt() throws NumberFormatException {
-        return Integer.parseInt(value);
+        return new BigDecimal(value).intValue();
     }
 
     @Override
-    public int asIntExact() throws NumberFormatException {
-        return Integer.parseInt(value);
+    public int asIntExact() throws NumberFormatException, ArithmeticException {
+        return new BigDecimal(value).intValueExact();
     }
 
     @Override
     public long asLong() throws NumberFormatException {
-        return Long.parseLong(value);
+        return new BigDecimal(value).longValue();
     }
 
     @Override
-    public long asLongExact() throws NumberFormatException {
-        return Long.parseLong(value);
+    public long asLongExact() throws NumberFormatException, ArithmeticException {
+        return new BigDecimal(value).longValueExact();
     }
 
     @Override
@@ -46,6 +46,7 @@ public record StringNode(String value) implements ValueNode, NumberView, StringV
 
     @Override
     public float asFloatExact() throws NumberFormatException {
+        // todo
         return Float.parseFloat(value);
     }
 
@@ -56,12 +57,18 @@ public record StringNode(String value) implements ValueNode, NumberView, StringV
 
     @Override
     public double asDoubleExact() throws NumberFormatException {
+        // todo
         return Double.parseDouble(value);
     }
 
     @Override
     public BigInteger asBigInteger() throws NumberFormatException {
         return new BigInteger(value);
+    }
+
+    @Override
+    public BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException {
+        return null;
     }
 
     @Override
