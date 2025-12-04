@@ -46,10 +46,9 @@ public record StringNode(String value) implements ValueNode, NumberView, StringV
 
     @Override
     public float asFloatExact() throws NumberFormatException, ArithmeticException {
-        // todo 有问题
         var x = new BigDecimal(value);
         var f = x.floatValue();
-        if (!BigDecimal.valueOf(f).equals(x)) {
+        if (BigDecimal.valueOf(f).compareTo(x) != 0) {
             throw new ArithmeticException("Precision loss: " + value);
         }
         return f;
@@ -62,10 +61,9 @@ public record StringNode(String value) implements ValueNode, NumberView, StringV
 
     @Override
     public double asDoubleExact() throws NumberFormatException, ArithmeticException {
-        // todo 有问题
         var x = new BigDecimal(value);
         var d = x.doubleValue();
-        if (!BigDecimal.valueOf(d).equals(x)) {
+        if (BigDecimal.valueOf(d).compareTo(x) != 0) {
             throw new ArithmeticException("Precision loss: " + value);
         }
         return d;

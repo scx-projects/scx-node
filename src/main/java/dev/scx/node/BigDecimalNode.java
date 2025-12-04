@@ -46,9 +46,8 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode, NumberView
 
     @Override
     public float asFloatExact() throws ArithmeticException {
-        // todo 有问题
         var f = value.floatValue();
-        if (!BigDecimal.valueOf(f).equals(value)) {
+        if (BigDecimal.valueOf(f).compareTo(value) != 0) {
             throw new ArithmeticException("Precision loss: " + value);
         }
         return f;
@@ -61,9 +60,8 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode, NumberView
 
     @Override
     public double asDoubleExact() throws ArithmeticException {
-        // todo 有问题
         var d = value.doubleValue();
-        if (!BigDecimal.valueOf(d).equals(value)) {
+        if (BigDecimal.valueOf(d).compareTo(value) != 0) {
             throw new ArithmeticException("Precision loss: " + value);
         }
         return d;
@@ -91,7 +89,7 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode, NumberView
 
     @Override
     public boolean asBoolean() {
-        return !value.equals(BigDecimal.ZERO);
+        return value.compareTo(BigDecimal.ZERO) != 0;
     }
 
     @Override
