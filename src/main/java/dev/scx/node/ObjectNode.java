@@ -38,14 +38,17 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         return fields.remove(name);
     }
 
+    @Override
     public int size() {
         return fields.size();
     }
 
+    @Override
     public boolean isEmpty() {
         return fields.isEmpty();
     }
 
+    @Override
     public void clear() {
         fields.clear();
     }

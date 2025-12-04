@@ -49,14 +49,17 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         return elements.remove(index);
     }
 
+    @Override
     public int size() {
         return elements.size();
     }
 
+    @Override
     public boolean isEmpty() {
         return elements.isEmpty();
     }
 
+    @Override
     public void clear() {
         elements.clear();
     }
