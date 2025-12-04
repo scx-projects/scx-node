@@ -92,6 +92,13 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         return false;
     }
 
+    @Override
+    public String toString() {
+        // 采用 JSON 格式
+        // 这里假设 ArrayNode 不存在自引用
+        return toString0(0);
+    }
+
     /// 内部方法
     String toString0(int indentLevel) {
         // 采用 JSON 格式
@@ -130,13 +137,6 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         // 尾部
         sb.append("]");
         return sb.toString();
-    }
-
-    @Override
-    public String toString() {
-        // 采用 JSON 格式
-        // 这里假设 ArrayNode 不存在自引用
-        return toString0(0);
     }
 
 }

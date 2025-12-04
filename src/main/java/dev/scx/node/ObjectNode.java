@@ -81,6 +81,11 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         return false;
     }
 
+    @Override
+    public String toString() {
+        return toString0(0);
+    }
+
     /// 内部方法
     String toString0(int indentLevel) {
         // 采用 JSON 格式
@@ -126,11 +131,6 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         // 尾部
         sb.append("}");
         return sb.toString();
-    }
-
-    @Override
-    public String toString() {
-        return toString0(0);
     }
 
 }
