@@ -112,6 +112,7 @@ public final class BooleanNode implements ValueNode {
 
     @Override
     public String toString() {
+        // 采用 JSON 格式
         return asString();
     }
 
