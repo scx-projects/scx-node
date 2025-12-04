@@ -14,9 +14,9 @@ public class ObjectNodeTest {
     @Test
     public static void test1() {
         var a = new ObjectNode();
-        a.put("0", new IntNode(100));
-        a.put("1", new IntNode(125));
-        a.put("2", new IntNode(200));
+        a.put("0", 100);
+        a.put("1", 125);
+        a.put("2", 200);
         a.put("3", new IntNode(300));
         Assert.assertEquals(a.get("0"), new IntNode(100));
         Assert.assertEquals(a.get("1"), new IntNode(125));

@@ -14,9 +14,9 @@ public class ArrayNodeTest {
     @Test
     public static void test1() {
         var a = new ArrayNode();
-        a.add(new IntNode(100));
-        a.add(new IntNode(125));
-        a.add(new IntNode(200));
+        a.add(100);
+        a.add(125);
+        a.add(200);
         a.add(new IntNode(300));
         Assert.assertEquals(a.get(0), new IntNode(100));
         Assert.assertEquals(a.get(1), new IntNode(125));
