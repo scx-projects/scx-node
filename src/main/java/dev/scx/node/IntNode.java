@@ -1,5 +1,9 @@
 package dev.scx.node;
 
+import dev.scx.node.view.BooleanView;
+import dev.scx.node.view.NumberView;
+import dev.scx.node.view.StringView;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -7,10 +11,15 @@ import java.math.BigInteger;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public record IntNode(int value) implements NumberNode {
+public record IntNode(int value) implements NumberNode, NumberView, StringView, BooleanView {
 
     @Override
     public int asInt() {
+        return value;
+    }
+
+    @Override
+    public int asIntExact() {
         return value;
     }
 
@@ -20,12 +29,31 @@ public record IntNode(int value) implements NumberNode {
     }
 
     @Override
+    public long asLongExact() {
+        return value;
+    }
+
+    @Override
     public float asFloat() {
         return value;
     }
 
     @Override
+    public float asFloatExact() {
+        float f = (float) value;
+        if ((int) f != value) {
+            throw new ArithmeticException("Precision loss when converting int to float: " + value);
+        }
+        return f;
+    }
+
+    @Override
     public double asDouble() {
+        return value;
+    }
+
+    @Override
+    public double asDoubleExact() {
         return value;
     }
 
@@ -49,7 +77,6 @@ public record IntNode(int value) implements NumberNode {
         return value != 0;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public IntNode deepCopy() {
         return this;
