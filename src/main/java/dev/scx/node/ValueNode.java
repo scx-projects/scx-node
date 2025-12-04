@@ -74,8 +74,8 @@ public sealed interface ValueNode extends Node permits NumberNode, StringNode, B
 
     /// 转换为 boolean
     ///
-    /// - 对于数值类型 : value != 0
-    /// - 对于字符串类型 : "true".equalsIgnoreCase(s)
+    /// - 对于 数值类型 : value != 0
+    /// - 对于 字符串类型 : "true".equalsIgnoreCase(s)
     ///
     boolean asBoolean();
 
