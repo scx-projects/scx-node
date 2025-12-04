@@ -13,6 +13,7 @@ public class BigDecimalNodeTest {
         test2();
         test3();
         test4();
+        test5();
     }
 
     @Test
@@ -71,7 +72,29 @@ public class BigDecimalNodeTest {
     @Test
     public static void test4() {
         // 测试 不 溢出
-        var n = new BigDecimalNode(BigDecimal.valueOf(200F));
+        var n = new BigDecimalNode(BigDecimal.valueOf(200));
+
+        n.asInt();
+        n.asIntExact();
+        n.asLong();
+        n.asLongExact();
+        n.asFloat();
+        n.asFloatExact();
+        n.asDouble();
+        n.asDoubleExact();
+        n.asBigInteger();
+        n.asBigIntegerExact();
+        n.asBigDecimal();
+        n.asString();
+        n.asBoolean();
+        n.deepCopy();
+        n.toString();
+    }
+
+    @Test
+    public static void test5() {
+        // 测试 不 溢出
+        var n = new BigDecimalNode(BigDecimal.valueOf(200.00));
 
         n.asInt();
         n.asIntExact();
