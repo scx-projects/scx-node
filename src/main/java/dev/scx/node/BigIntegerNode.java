@@ -25,7 +25,7 @@ public record BigIntegerNode(BigInteger value) implements NumberNode, NumberView
     }
 
     @Override
-    public int asIntExact() throws NumberFormatException, ArithmeticException {
+    public int asIntExact() throws ArithmeticException {
         return value.intValueExact();
     }
 
@@ -35,7 +35,7 @@ public record BigIntegerNode(BigInteger value) implements NumberNode, NumberView
     }
 
     @Override
-    public long asLongExact() throws NumberFormatException, ArithmeticException {
+    public long asLongExact() throws ArithmeticException {
         return value.longValueExact();
     }
 
@@ -45,14 +45,12 @@ public record BigIntegerNode(BigInteger value) implements NumberNode, NumberView
     }
 
     @Override
-    public float asFloatExact() throws NumberFormatException, ArithmeticException {
-        // todo 判断方式存疑
-        // float 的最大可精确整数是 2^24
-        if (value.bitLength() > 24) {
-            // 超过精度范围
-            throw new ArithmeticException("Precision loss converting BigInteger to float");
+    public float asFloatExact() throws ArithmeticException {
+        var f = value.floatValue();
+        if (!BigDecimal.valueOf(f).toBigInteger().equals(value)) {
+            throw new ArithmeticException("Precision loss: " + value);
         }
-        return value.floatValue();
+        return f;
     }
 
     @Override
@@ -61,14 +59,12 @@ public record BigIntegerNode(BigInteger value) implements NumberNode, NumberView
     }
 
     @Override
-    public double asDoubleExact() throws NumberFormatException, ArithmeticException {
-        // todo 判断方式存疑
-        // double 的最大可精确整数是 2^53
-        if (value.bitLength() > 53) {
-            // 超过精度范围
-            throw new ArithmeticException("Precision loss converting BigInteger to double");
+    public double asDoubleExact() throws ArithmeticException {
+        var d = value.doubleValue();
+        if (!BigDecimal.valueOf(d).toBigInteger().equals(value)) {
+            throw new ArithmeticException("Precision loss: " + value);
         }
-        return value.doubleValue();
+        return d;
     }
 
     @Override
