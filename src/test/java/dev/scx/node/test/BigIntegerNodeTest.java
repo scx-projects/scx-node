@@ -49,16 +49,16 @@ public class BigIntegerNodeTest {
     @Test
     public static void test3() {
         // 测试 极小值 溢出
-        var n = new BigIntegerNode(BigInteger.valueOf(Integer.MIN_VALUE + 1));
+        var n = new BigIntegerNode(BigInteger.valueOf(Long.MIN_VALUE + 1));
 
         n.asInt();
-        n.asIntExact();
+        Assert.assertThrows(ArithmeticException.class, n::asIntExact);
         n.asLong();
         n.asLongExact();
         n.asFloat();
         Assert.assertThrows(ArithmeticException.class, n::asFloatExact);
         n.asDouble();
-        n.asDoubleExact();
+        Assert.assertThrows(ArithmeticException.class, n::asDoubleExact);
         n.asBigInteger();
         n.asBigIntegerExact();
         n.asBigDecimal();
@@ -71,16 +71,16 @@ public class BigIntegerNodeTest {
     @Test
     public static void test4() {
         // 测试 极大值 溢出
-        var n = new BigIntegerNode(BigInteger.valueOf(Integer.MAX_VALUE - 1));
+        var n = new BigIntegerNode(BigInteger.valueOf(Long.MAX_VALUE - 1));
 
         n.asInt();
-        n.asIntExact();
+        Assert.assertThrows(ArithmeticException.class, n::asIntExact);
         n.asLong();
         n.asLongExact();
         n.asFloat();
         Assert.assertThrows(ArithmeticException.class, n::asFloatExact);
         n.asDouble();
-        n.asDoubleExact();
+        Assert.assertThrows(ArithmeticException.class, n::asDoubleExact);
         n.asBigInteger();
         n.asBigIntegerExact();
         n.asBigDecimal();
