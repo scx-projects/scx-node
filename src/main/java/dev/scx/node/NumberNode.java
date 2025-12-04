@@ -12,30 +12,6 @@ import java.math.BigInteger;
 public sealed interface NumberNode extends ValueNode permits IntNode, LongNode, FloatNode, DoubleNode, BigIntegerNode, BigDecimalNode {
 
     @Override
-    int asInt();
-
-    @Override
-    long asLong();
-
-    @Override
-    float asFloat();
-
-    @Override
-    double asDouble();
-
-    @Override
-    BigInteger asBigInteger();
-
-    @Override
-    BigDecimal asBigDecimal();
-
-    @Override
-    String asString();
-
-    @Override
-    boolean asBoolean();
-
-    @Override
     NumberNode deepCopy();
 
 }

@@ -12,4 +12,7 @@ public sealed interface ContainerNode extends Node permits ArrayNode, ObjectNode
 
     void clear();
 
+    @Override
+    ContainerNode deepCopy();
+
 }
