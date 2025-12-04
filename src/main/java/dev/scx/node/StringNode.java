@@ -41,34 +41,44 @@ public record StringNode(String value) implements ValueNode, NumberView, StringV
 
     @Override
     public float asFloat() throws NumberFormatException {
-        return Float.parseFloat(value);
+        return new BigDecimal(value).floatValue();
     }
 
     @Override
-    public float asFloatExact() throws NumberFormatException {
-        // todo
-        return Float.parseFloat(value);
+    public float asFloatExact() throws NumberFormatException, ArithmeticException {
+        // todo 有问题
+        var x = new BigDecimal(value);
+        var f = x.floatValue();
+        if (!BigDecimal.valueOf(f).equals(x)) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return f;
     }
 
     @Override
     public double asDouble() throws NumberFormatException {
-        return Double.parseDouble(value);
+        return new BigDecimal(value).doubleValue();
     }
 
     @Override
-    public double asDoubleExact() throws NumberFormatException {
-        // todo
-        return Double.parseDouble(value);
+    public double asDoubleExact() throws NumberFormatException, ArithmeticException {
+        // todo 有问题
+        var x = new BigDecimal(value);
+        var d = x.doubleValue();
+        if (!BigDecimal.valueOf(d).equals(x)) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return d;
     }
 
     @Override
     public BigInteger asBigInteger() throws NumberFormatException {
-        return new BigInteger(value);
+        return new BigDecimal(value).toBigInteger();
     }
 
     @Override
     public BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException {
-        return null;
+        return new BigDecimal(value).toBigIntegerExact();
     }
 
     @Override
