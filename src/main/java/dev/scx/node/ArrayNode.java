@@ -132,6 +132,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
             sb.append("\n");
             index = index + 1;
         }
+
         // 当前层缩进
         sb.append("  ".repeat(indentLevel));
         // 尾部

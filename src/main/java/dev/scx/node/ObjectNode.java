@@ -83,6 +83,8 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
 
     @Override
     public String toString() {
+        // 采用 JSON 格式
+        // 这里假设 ObjectNode 不存在自引用
         return toString0(0);
     }
 
