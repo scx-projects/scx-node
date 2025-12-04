@@ -107,7 +107,9 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         var index = 0;
         for (var element : elements) {
             // 每个元素缩进 2 个空格
-            sb.append("  ").append(element.toString());
+            sb.append("  ");
+            // 添加 值
+            sb.append(element.toString());
             // 如果不是最后一个元素, 加逗号
             if (index != size - 1) {
                 sb.append(",");
