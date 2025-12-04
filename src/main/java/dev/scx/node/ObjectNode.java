@@ -8,7 +8,7 @@ import java.util.Map;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public final class ObjectNode implements Node, Iterable<Map.Entry<String, Node>> {
+public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<String, Node>> {
 
     private final Map<String, Node> fields;
 

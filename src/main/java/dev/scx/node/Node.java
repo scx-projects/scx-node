@@ -9,11 +9,11 @@ package dev.scx.node;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public sealed interface Node permits ValueNode, ArrayNode, ObjectNode, NullNode {
+public sealed interface Node permits ValueNode, ContainerNode, NullNode {
 
-    /// 深拷贝, 本质上只有 [ArrayNode] 和 [ObjectNode] 才存在这个概念.
+    /// 深拷贝, 本质上只有 [ContainerNode] 才存在这个概念.
     /// 但是为了使用便利性, 这里提升到 最顶层 Node 接口中.
-    /// - [ArrayNode] / [ObjectNode] 会返回结构完全独立的副本.
+    /// - [ContainerNode] 会返回结构完全独立的副本.
     /// - [ValueNode] / [NullNode] 返回自身(不可变节点, 无需复制).
     Node deepCopy();
 

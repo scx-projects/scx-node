@@ -8,7 +8,7 @@ import java.util.List;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public final class ArrayNode implements Node, Iterable<Node> {
+public final class ArrayNode implements ContainerNode, Iterable<Node> {
 
     private final List<Node> elements;
 
