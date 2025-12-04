@@ -19,6 +19,10 @@ public final class BooleanNode implements ValueNode {
         this.value = value;
     }
 
+    public static BooleanNode of(boolean v) {
+        return v ? TRUE : FALSE;
+    }
+
     public boolean value() {
         return value;
     }
