@@ -1,10 +1,13 @@
 package dev.scx.node.view;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 /// NumberView
 ///
 /// @author scx567888
 /// @version 0.0.1
-public interface NumberView extends  BigIntegerView, BigDecimalView {
+public interface NumberView extends   BigDecimalView {
 
     /// 转换为 int (允许丢失精度)
     ///
@@ -49,5 +52,21 @@ public interface NumberView extends  BigIntegerView, BigDecimalView {
     /// @throws NumberFormatException 数字格式不正确
     /// @throws ArithmeticException   精度丢失
     double asDoubleExact() throws NumberFormatException, ArithmeticException;
+
+    /// 转换为 BigInteger (允许丢失精度)
+    ///
+    /// @throws NumberFormatException 数字格式不正确
+    BigInteger asBigInteger() throws NumberFormatException;
+
+    /// 转换为 BigInteger (不允许丢失精度)
+    ///
+    /// @throws NumberFormatException 数字格式不正确
+    /// @throws ArithmeticException   精度丢失
+    BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException;
+
+    /// 转换为 BigDecimal
+    ///
+    /// @throws NumberFormatException 数字格式不正确
+    BigDecimal asBigDecimal() throws NumberFormatException;
 
 }

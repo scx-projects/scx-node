@@ -8,9 +8,5 @@ import java.math.BigDecimal;
 /// @version 0.0.1
 public interface BigDecimalView {
 
-    /// 转换为 BigDecimal
-    ///
-    /// @throws NumberFormatException 数字格式不正确
-    BigDecimal asBigDecimal() throws NumberFormatException;
 
 }
