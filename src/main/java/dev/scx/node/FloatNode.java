@@ -91,6 +91,7 @@ public record FloatNode(float value) implements NumberNode {
 
     @Override
     public String toString() {
+        // 采用 JSON 格式
         return asString();
     }
 
