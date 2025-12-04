@@ -80,16 +80,16 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
     }
 
     @Override
+    public int hashCode() {
+        return elements.hashCode();
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (object instanceof ArrayNode arrayNode) {
             return elements.equals(arrayNode.elements);
         }
         return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return elements.hashCode();
     }
 
     @Override

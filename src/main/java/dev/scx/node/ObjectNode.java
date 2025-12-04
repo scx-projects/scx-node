@@ -69,16 +69,16 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
     }
 
     @Override
+    public int hashCode() {
+        return fields.hashCode();
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (object instanceof ObjectNode objectNode) {
             return fields.equals(objectNode.fields);
         }
         return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return fields.hashCode();
     }
 
     @Override

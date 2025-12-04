@@ -98,16 +98,16 @@ public final class BooleanNode implements ValueNode, NumberView, StringView, Boo
     }
 
     @Override
+    public int hashCode() {
+        return Boolean.hashCode(value);
+    }
+
+    @Override
     public boolean equals(Object object) {
         if (object instanceof BooleanNode booleanNode) {
             return value == booleanNode.value;
         }
         return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return Boolean.hashCode(value);
     }
 
     @Override
