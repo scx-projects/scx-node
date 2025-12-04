@@ -62,6 +62,11 @@ public record IntNode(int value) implements NumberNode, NumberView, StringView, 
     }
 
     @Override
+    public BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException {
+        return BigInteger.valueOf(value);
+    }
+
+    @Override
     public BigDecimal asBigDecimal() {
         return BigDecimal.valueOf(value);
     }
