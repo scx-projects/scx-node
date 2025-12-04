@@ -1,5 +1,9 @@
 package dev.scx.node;
 
+import dev.scx.node.view.BooleanView;
+import dev.scx.node.view.NumberView;
+import dev.scx.node.view.StringView;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -7,7 +11,7 @@ import java.math.BigInteger;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public final class BooleanNode implements ValueNode {
+public final class BooleanNode implements ValueNode, NumberView, StringView, BooleanView {
 
     public final static BooleanNode TRUE = new BooleanNode(true);
     public final static BooleanNode FALSE = new BooleanNode(false);
@@ -33,7 +37,17 @@ public final class BooleanNode implements ValueNode {
     }
 
     @Override
+    public int asIntExact() throws NumberFormatException, ArithmeticException {
+        return value ? 1 : 0;
+    }
+
+    @Override
     public long asLong() {
+        return value ? 1L : 0L;
+    }
+
+    @Override
+    public long asLongExact() throws NumberFormatException, ArithmeticException {
         return value ? 1L : 0L;
     }
 
@@ -43,7 +57,17 @@ public final class BooleanNode implements ValueNode {
     }
 
     @Override
+    public float asFloatExact() throws NumberFormatException, ArithmeticException {
+        return value ? 1.0F : 0.0F;
+    }
+
+    @Override
     public double asDouble() {
+        return value ? 1.0D : 0.0D;
+    }
+
+    @Override
+    public double asDoubleExact() throws NumberFormatException, ArithmeticException {
         return value ? 1.0D : 0.0D;
     }
 
@@ -67,7 +91,6 @@ public final class BooleanNode implements ValueNode {
         return value;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public BooleanNode deepCopy() {
         return this;
