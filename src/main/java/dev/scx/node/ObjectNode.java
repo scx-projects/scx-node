@@ -81,8 +81,8 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         return false;
     }
 
-    @Override
-    public String toString() {
+    /// 内部方法
+    String toString0(int indentLevel) {
         // 采用 JSON 格式
         // 这里假设 ObjectNode 不存在自引用
         if (fields.isEmpty()) {
@@ -95,14 +95,24 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         var size = fields.size();
         var index = 0;
         for (var field : fields.entrySet()) {
-            // 每个元素缩进 2 个空格
-            sb.append("  ");
+            // 缩进单位 2 个空格.
+            sb.append("  ".repeat(indentLevel + 1));
+
             // 添加 key
             sb.append("\"").append(field.getKey()).append("\"");
             // 添加分隔符
             sb.append(": ");
+
+            var element = field.getValue();
             // 添加 值
-            sb.append(field.getValue().toString());
+            if (element instanceof ArrayNode arrayNode) {
+                sb.append(arrayNode.toString0(index));
+            }else if (element instanceof ObjectNode objectNode) {
+                sb.append(objectNode.toString0(index));
+            }else {
+                sb.append(element.toString());
+            }
+
             // 如果不是最后一个元素, 加逗号
             if (index != size - 1) {
                 sb.append(",");
@@ -113,6 +123,11 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
 
         sb.append("}");
         return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return toString0(0);
     }
 
 }

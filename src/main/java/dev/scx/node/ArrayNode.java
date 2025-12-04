@@ -92,8 +92,8 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         return false;
     }
 
-    @Override
-    public String toString() {
+    /// 内部方法
+    String toString0(int indentLevel) {
         // 采用 JSON 格式
         // 这里假设 ArrayNode 不存在自引用
         if (elements.isEmpty()) {
@@ -106,10 +106,18 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         var size = elements.size();
         var index = 0;
         for (var element : elements) {
-            // 每个元素缩进 2 个空格
-            sb.append("  ");
+            // 缩进单位 2 个空格.
+            sb.append("  ".repeat(indentLevel + 1));
+
             // 添加 值
-            sb.append(element.toString());
+            if (element instanceof ArrayNode arrayNode) {
+                sb.append(arrayNode.toString0(index));
+            }else if (element instanceof ObjectNode objectNode) {
+                sb.append(objectNode.toString0(index));
+            }else {
+                sb.append(element.toString());
+            }
+
             // 如果不是最后一个元素, 加逗号
             if (index != size - 1) {
                 sb.append(",");
@@ -120,6 +128,13 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
 
         sb.append("]");
         return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        // 采用 JSON 格式
+        // 这里假设 ArrayNode 不存在自引用
+        return toString0(0);
     }
 
 }
