@@ -1,5 +1,9 @@
 package dev.scx.node;
 
+import dev.scx.node.view.BooleanView;
+import dev.scx.node.view.NumberView;
+import dev.scx.node.view.StringView;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -9,10 +13,18 @@ import java.math.BigInteger;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public record DoubleNode(double value) implements NumberNode {
+public record DoubleNode(double value) implements NumberNode, NumberView, StringView, BooleanView {
 
     @Override
     public int asInt() {
+        return (int) value;
+    }
+
+    @Override
+    public int asIntExact() throws NumberFormatException, ArithmeticException {
+        if ((int) value != value) {
+            throw new ArithmeticException("integer overflow");
+        }
         return (int) value;
     }
 
@@ -22,7 +34,23 @@ public record DoubleNode(double value) implements NumberNode {
     }
 
     @Override
+    public long asLongExact() throws NumberFormatException, ArithmeticException {
+        if ((long) value != value) {
+            throw new ArithmeticException("integer overflow");
+        }
+        return (long) value;
+    }
+
+    @Override
     public float asFloat() {
+        return (float) value;
+    }
+
+    @Override
+    public float asFloatExact() throws NumberFormatException, ArithmeticException {
+        if ((float) value != value) {
+            throw new ArithmeticException("integer overflow");
+        }
         return (float) value;
     }
 
@@ -32,8 +60,18 @@ public record DoubleNode(double value) implements NumberNode {
     }
 
     @Override
-    public BigInteger asBigInteger() {
+    public double asDoubleExact() {
+        return value;
+    }
+
+    @Override
+    public BigInteger asBigInteger() throws NumberFormatException {
         return BigDecimal.valueOf(value).toBigInteger();
+    }
+
+    @Override
+    public BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException {
+        return BigDecimal.valueOf(value).toBigIntegerExact();
     }
 
     @Override
@@ -43,7 +81,7 @@ public record DoubleNode(double value) implements NumberNode {
 
     @Override
     public String asString() {
-        return String.valueOf(value);
+        return Double.toString(value);
     }
 
     @Override
@@ -51,7 +89,6 @@ public record DoubleNode(double value) implements NumberNode {
         return value != 0;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public DoubleNode deepCopy() {
         return this;
