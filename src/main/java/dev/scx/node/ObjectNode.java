@@ -1,5 +1,7 @@
 package dev.scx.node;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -132,6 +134,64 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         // 尾部
         sb.append("}");
         return sb.toString();
+    }
+
+    //*************** 简易方法 ********************
+
+    public Node put(String name, int value) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode cannot put null name");
+        }
+        return fields.put(name, new IntNode(value));
+    }
+
+    public Node put(String name, long value) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode cannot put null name");
+        }
+        return fields.put(name, new LongNode(value));
+    }
+
+    public Node put(String name, float value) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode cannot put null name");
+        }
+        return fields.put(name, new FloatNode(value));
+    }
+
+    public Node put(String name, double value) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode cannot put null name");
+        }
+        return fields.put(name, new DoubleNode(value));
+    }
+
+    public Node put(String name, BigInteger value) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode cannot put null name");
+        }
+        return fields.put(name, new BigIntegerNode(value));
+    }
+
+    public Node put(String name, BigDecimal value) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode cannot put null name");
+        }
+        return fields.put(name, new BigDecimalNode(value));
+    }
+
+    public Node put(String name, String value) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode cannot put null name");
+        }
+        return fields.put(name, new StringNode(value));
+    }
+
+    public Node put(String name, boolean value) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode cannot put null name");
+        }
+        return fields.put(name, BooleanNode.of(value));
     }
 
 }
