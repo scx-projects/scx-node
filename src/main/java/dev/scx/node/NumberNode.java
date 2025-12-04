@@ -1,11 +1,6 @@
 package dev.scx.node;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
-/// NumberNode (语义标记接口)
-///
-/// 同时移除 asXXX 上的 throws NumberFormatException (因为不可能发生)
+/// NumberNode
 ///
 /// @author scx567888
 /// @version 0.0.1
