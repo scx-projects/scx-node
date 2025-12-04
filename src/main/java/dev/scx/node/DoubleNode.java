@@ -1,9 +1,5 @@
 package dev.scx.node;
 
-import dev.scx.node.view.BooleanView;
-import dev.scx.node.view.NumberView;
-import dev.scx.node.view.StringView;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -15,7 +11,7 @@ import java.math.BigInteger;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public record DoubleNode(double value) implements NumberNode, NumberView, StringView, BooleanView {
+public record DoubleNode(double value) implements NumberNode {
 
     @Override
     public int asInt() {
