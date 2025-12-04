@@ -6,8 +6,8 @@ import org.testng.annotations.Test;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import static dev.scx.node.BooleanNode.TRUE;
 import static dev.scx.node.BooleanNode.FALSE;
+import static dev.scx.node.BooleanNode.TRUE;
 
 public class BooleanNodeTest {
 

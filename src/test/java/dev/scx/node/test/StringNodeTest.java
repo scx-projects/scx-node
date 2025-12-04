@@ -28,17 +28,17 @@ public class StringNodeTest {
         // 测试 不可转换值
         var n = new StringNode("true");
 
-        Assert.assertThrows(NumberFormatException.class,n::asInt);
-        Assert.assertThrows(NumberFormatException.class,n::asIntExact);
-        Assert.assertThrows(NumberFormatException.class,n::asLong);
-        Assert.assertThrows(NumberFormatException.class,n::asLongExact);
-        Assert.assertThrows(NumberFormatException.class,n::asFloat);
-        Assert.assertThrows(NumberFormatException.class,n::asFloatExact);
-        Assert.assertThrows(NumberFormatException.class,n::asDouble);
-        Assert.assertThrows(NumberFormatException.class,n::asDoubleExact);
-        Assert.assertThrows(NumberFormatException.class,n::asBigInteger);
-        Assert.assertThrows(NumberFormatException.class,n::asBigIntegerExact);
-        Assert.assertThrows(NumberFormatException.class,n::asBigDecimal);
+        Assert.assertThrows(NumberFormatException.class, n::asInt);
+        Assert.assertThrows(NumberFormatException.class, n::asIntExact);
+        Assert.assertThrows(NumberFormatException.class, n::asLong);
+        Assert.assertThrows(NumberFormatException.class, n::asLongExact);
+        Assert.assertThrows(NumberFormatException.class, n::asFloat);
+        Assert.assertThrows(NumberFormatException.class, n::asFloatExact);
+        Assert.assertThrows(NumberFormatException.class, n::asDouble);
+        Assert.assertThrows(NumberFormatException.class, n::asDoubleExact);
+        Assert.assertThrows(NumberFormatException.class, n::asBigInteger);
+        Assert.assertThrows(NumberFormatException.class, n::asBigIntegerExact);
+        Assert.assertThrows(NumberFormatException.class, n::asBigDecimal);
         n.asString();
         n.asBoolean();
         n.deepCopy();
@@ -50,10 +50,10 @@ public class StringNodeTest {
         // 测试 极小值 溢出
         var n = new StringNode("-1000.00001");
 
-        Assert.assertEquals(n.asInt(),-1000);
-        Assert.assertThrows(ArithmeticException.class,n::asIntExact);
-        Assert.assertEquals(n.asLong(),-1000L);
-        Assert.assertThrows(ArithmeticException.class,n::asLongExact);
+        Assert.assertEquals(n.asInt(), -1000);
+        Assert.assertThrows(ArithmeticException.class, n::asIntExact);
+        Assert.assertEquals(n.asLong(), -1000L);
+        Assert.assertThrows(ArithmeticException.class, n::asLongExact);
         n.asFloat();
         Assert.assertThrows(ArithmeticException.class, n::asFloatExact);
         n.asDouble();
@@ -73,7 +73,7 @@ public class StringNodeTest {
         var n = new StringNode("9999999999999");
 
         n.asInt();
-        Assert.assertThrows(ArithmeticException.class,n::asIntExact);
+        Assert.assertThrows(ArithmeticException.class, n::asIntExact);
         n.asLong();
         n.asLongExact();
         n.asFloat();
