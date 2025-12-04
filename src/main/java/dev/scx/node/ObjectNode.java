@@ -114,9 +114,9 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
             // 添加 值
             if (element instanceof ArrayNode arrayNode) {
                 sb.append(arrayNode.toString0(indentLevel + 1));
-            }else if (element instanceof ObjectNode objectNode) {
+            } else if (element instanceof ObjectNode objectNode) {
                 sb.append(objectNode.toString0(indentLevel + 1));
-            }else {
+            } else {
                 sb.append(element.toString());
             }
 
