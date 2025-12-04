@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class IntNodeTest {
 
-    public static void main(String[] args) throws Throwable {
+    public static void main(String[] args) {
         test1();
         test2();
         test3();

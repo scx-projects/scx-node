@@ -1,13 +1,12 @@
 package dev.scx.node.test;
 
-import dev.scx.node.IntNode;
 import dev.scx.node.LongNode;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LongNodeTest {
 
-    public static void main(String[] args) throws Throwable {
+    public static void main(String[] args) {
         test1();
         test2();
         test3();
