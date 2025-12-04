@@ -94,7 +94,30 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
 
     @Override
     public String toString() {
-        return elements.toString();
+        // 采用 JSON 格式
+        // 这里假设 ArrayNode 不存在自引用
+        if (elements.isEmpty()) {
+            return "[]";
+        }
+
+        var sb = new StringBuilder();
+        sb.append("[\n");
+
+        var size = elements.size();
+        var index = 0;
+        for (var element : elements) {
+            // 每个元素缩进 2 个空格
+            sb.append("  ").append(element.toString());
+            // 如果不是最后一个元素, 加逗号
+            if (index != size - 1) {
+                sb.append(",");
+            }
+            sb.append("\n");
+            index = index + 1;
+        }
+
+        sb.append("]");
+        return sb.toString();
     }
 
 }
