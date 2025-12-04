@@ -1,5 +1,9 @@
 package dev.scx.node;
 
+import dev.scx.node.view.BooleanView;
+import dev.scx.node.view.NumberView;
+import dev.scx.node.view.StringView;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -11,10 +15,18 @@ import java.math.BigInteger;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public record FloatNode(float value) implements NumberNode {
+public record FloatNode(float value) implements NumberNode, NumberView, StringView, BooleanView {
 
     @Override
     public int asInt() {
+        return (int) value;
+    }
+
+    @Override
+    public int asIntExact() throws ArithmeticException {
+        if ((double) (int) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
         return (int) value;
     }
 
@@ -24,7 +36,20 @@ public record FloatNode(float value) implements NumberNode {
     }
 
     @Override
+    public long asLongExact() throws ArithmeticException {
+        if ((double) (long) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return (long) value;
+    }
+
+    @Override
     public float asFloat() {
+        return value;
+    }
+
+    @Override
+    public float asFloatExact() {
         return value;
     }
 
@@ -34,8 +59,18 @@ public record FloatNode(float value) implements NumberNode {
     }
 
     @Override
+    public double asDoubleExact() {
+        return value;
+    }
+
+    @Override
     public BigInteger asBigInteger() {
         return BigDecimal.valueOf(value).toBigInteger();
+    }
+
+    @Override
+    public BigInteger asBigIntegerExact() throws ArithmeticException {
+        return BigDecimal.valueOf(value).toBigIntegerExact();
     }
 
     @Override
@@ -53,7 +88,6 @@ public record FloatNode(float value) implements NumberNode {
         return value != 0;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public FloatNode deepCopy() {
         return this;
