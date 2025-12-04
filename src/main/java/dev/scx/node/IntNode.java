@@ -40,11 +40,10 @@ public record IntNode(int value) implements NumberNode, NumberView, StringView, 
 
     @Override
     public float asFloatExact() throws ArithmeticException {
-        float f = (float) value;
-        if ((int) f != value) {
-            throw new ArithmeticException("Precision loss when converting int to float: " + value);
+        if ((float) value != value) {
+            throw new ArithmeticException("integer overflow");
         }
-        return f;
+        return (float) value;
     }
 
     @Override

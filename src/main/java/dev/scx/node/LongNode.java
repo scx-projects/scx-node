@@ -1,5 +1,9 @@
 package dev.scx.node;
 
+import dev.scx.node.view.BooleanView;
+import dev.scx.node.view.NumberView;
+import dev.scx.node.view.StringView;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -7,10 +11,18 @@ import java.math.BigInteger;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public record LongNode(long value) implements NumberNode {
+public record LongNode(long value) implements NumberNode, NumberView, StringView, BooleanView {
 
     @Override
     public int asInt() {
+        return (int) value;
+    }
+
+    @Override
+    public int asIntExact() throws ArithmeticException {
+        if ((int) value != value) {
+            throw new ArithmeticException("integer overflow");
+        }
         return (int) value;
     }
 
@@ -20,13 +32,34 @@ public record LongNode(long value) implements NumberNode {
     }
 
     @Override
+    public long asLongExact() {
+        return value;
+    }
+
+    @Override
     public float asFloat() {
         return value;
     }
 
     @Override
+    public float asFloatExact() throws ArithmeticException {
+        if ((float) value != value) {
+            throw new ArithmeticException("integer overflow");
+        }
+        return (float) value;
+    }
+
+    @Override
     public double asDouble() {
         return value;
+    }
+
+    @Override
+    public double asDoubleExact() throws ArithmeticException {
+        if ((double) value != value) {
+            throw new ArithmeticException("integer overflow");
+        }
+        return (double) value;
     }
 
     @Override
@@ -49,7 +82,6 @@ public record LongNode(long value) implements NumberNode {
         return value != 0;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public LongNode deepCopy() {
         return this;
