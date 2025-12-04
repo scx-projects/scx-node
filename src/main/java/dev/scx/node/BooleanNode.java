@@ -33,7 +33,17 @@ public final class BooleanNode implements ValueNode {
     }
 
     @Override
+    public int asIntExact() {
+        return value ? 1 : 0;
+    }
+
+    @Override
     public long asLong() {
+        return value ? 1L : 0L;
+    }
+
+    @Override
+    public long asLongExact() {
         return value ? 1L : 0L;
     }
 
@@ -43,7 +53,17 @@ public final class BooleanNode implements ValueNode {
     }
 
     @Override
+    public float asFloatExact() {
+        return value ? 1.0F : 0.0F;
+    }
+
+    @Override
     public double asDouble() {
+        return value ? 1.0D : 0.0D;
+    }
+
+    @Override
+    public double asDoubleExact() {
         return value ? 1.0D : 0.0D;
     }
 
@@ -53,12 +73,17 @@ public final class BooleanNode implements ValueNode {
     }
 
     @Override
+    public BigInteger asBigIntegerExact() {
+        return value ? BigInteger.ONE : BigInteger.ZERO;
+    }
+
+    @Override
     public BigDecimal asBigDecimal() {
         return value ? BigDecimal.ONE : BigDecimal.ZERO;
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return String.valueOf(value);
     }
 
@@ -67,10 +92,14 @@ public final class BooleanNode implements ValueNode {
         return value;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public BooleanNode deepCopy() {
         return this;
+    }
+
+    @Override
+    public int hashCode() {
+        return Boolean.hashCode(value);
     }
 
     @Override
@@ -82,13 +111,9 @@ public final class BooleanNode implements ValueNode {
     }
 
     @Override
-    public int hashCode() {
-        return Boolean.hashCode(value);
-    }
-
-    @Override
     public String toString() {
-        return asText();
+        // 采用 JSON 格式
+        return asString();
     }
 
 }

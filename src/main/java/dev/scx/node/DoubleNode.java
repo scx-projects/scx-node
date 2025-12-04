@@ -5,7 +5,9 @@ import java.math.BigInteger;
 
 /// DoubleNode
 ///
-/// 关于 equals 重写问题: 参考 [FloatNode].
+/// ### 关于 equals 重写问题:
+/// 浮点比较涉及 ±0.0 和 NaN 的特殊语义, 为了保证 equals 行为一致, 通常需要使用 [Double#compare(double, double)].
+/// 但按照 [Record#equals(Object)] 的方法约定, 其底层恰好采用了 这种判断逻辑, 因此我们无需手动重写 equals.
 ///
 /// @author scx567888
 /// @version 0.0.1
@@ -17,7 +19,23 @@ public record DoubleNode(double value) implements NumberNode {
     }
 
     @Override
+    public int asIntExact() throws ArithmeticException {
+        if ((double) (int) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return (int) value;
+    }
+
+    @Override
     public long asLong() {
+        return (long) value;
+    }
+
+    @Override
+    public long asLongExact() throws ArithmeticException {
+        if ((double) (long) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
         return (long) value;
     }
 
@@ -27,7 +45,20 @@ public record DoubleNode(double value) implements NumberNode {
     }
 
     @Override
+    public float asFloatExact() throws ArithmeticException {
+        if ((double) (float) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return (float) value;
+    }
+
+    @Override
     public double asDouble() {
+        return value;
+    }
+
+    @Override
+    public double asDoubleExact() {
         return value;
     }
 
@@ -37,12 +68,17 @@ public record DoubleNode(double value) implements NumberNode {
     }
 
     @Override
+    public BigInteger asBigIntegerExact() throws ArithmeticException {
+        return BigDecimal.valueOf(value).toBigIntegerExact();
+    }
+
+    @Override
     public BigDecimal asBigDecimal() {
         return BigDecimal.valueOf(value);
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return String.valueOf(value);
     }
 
@@ -51,7 +87,6 @@ public record DoubleNode(double value) implements NumberNode {
         return value != 0;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public DoubleNode deepCopy() {
         return this;
@@ -59,7 +94,8 @@ public record DoubleNode(double value) implements NumberNode {
 
     @Override
     public String toString() {
-        return asText();
+        // 采用 JSON 格式
+        return asString();
     }
 
 }

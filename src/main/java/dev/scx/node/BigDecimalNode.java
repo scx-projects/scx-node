@@ -21,8 +21,18 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode {
     }
 
     @Override
+    public int asIntExact() throws ArithmeticException {
+        return value.intValueExact();
+    }
+
+    @Override
     public long asLong() {
         return value.longValue();
+    }
+
+    @Override
+    public long asLongExact() throws ArithmeticException {
+        return value.longValueExact();
     }
 
     @Override
@@ -31,8 +41,26 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode {
     }
 
     @Override
+    public float asFloatExact() throws ArithmeticException {
+        var f = value.floatValue();
+        if (BigDecimal.valueOf(f).compareTo(value) != 0) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return f;
+    }
+
+    @Override
     public double asDouble() {
         return value.doubleValue();
+    }
+
+    @Override
+    public double asDoubleExact() throws ArithmeticException {
+        var d = value.doubleValue();
+        if (BigDecimal.valueOf(d).compareTo(value) != 0) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return d;
     }
 
     @Override
@@ -41,21 +69,25 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode {
     }
 
     @Override
+    public BigInteger asBigIntegerExact() throws ArithmeticException {
+        return value.toBigIntegerExact();
+    }
+
+    @Override
     public BigDecimal asBigDecimal() {
         return value;
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return value.toString();
     }
 
     @Override
     public boolean asBoolean() {
-        return !value.equals(BigDecimal.ZERO);
+        return value.compareTo(BigDecimal.ZERO) != 0;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public BigDecimalNode deepCopy() {
         return this;
@@ -63,7 +95,8 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode {
 
     @Override
     public String toString() {
-        return asText();
+        // 采用 JSON 格式
+        return asString();
     }
 
 }

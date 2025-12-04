@@ -1,5 +1,6 @@
 package dev.scx.node;
 
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -15,7 +16,20 @@ public record LongNode(long value) implements NumberNode {
     }
 
     @Override
+    public int asIntExact() throws ArithmeticException {
+        if ((long) (int) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return (int) value;
+    }
+
+    @Override
     public long asLong() {
+        return value;
+    }
+
+    @Override
+    public long asLongExact() {
         return value;
     }
 
@@ -25,12 +39,33 @@ public record LongNode(long value) implements NumberNode {
     }
 
     @Override
+    public float asFloatExact() throws ArithmeticException {
+        if ((long) (float) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return (float) value;
+    }
+
+    @Override
     public double asDouble() {
         return value;
     }
 
     @Override
+    public double asDoubleExact() throws ArithmeticException {
+        if ((long) (double) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return (double) value;
+    }
+
+    @Override
     public BigInteger asBigInteger() {
+        return BigInteger.valueOf(value);
+    }
+
+    @Override
+    public BigInteger asBigIntegerExact() {
         return BigInteger.valueOf(value);
     }
 
@@ -40,7 +75,7 @@ public record LongNode(long value) implements NumberNode {
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return String.valueOf(value);
     }
 
@@ -49,7 +84,6 @@ public record LongNode(long value) implements NumberNode {
         return value != 0;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public LongNode deepCopy() {
         return this;
@@ -57,7 +91,8 @@ public record LongNode(long value) implements NumberNode {
 
     @Override
     public String toString() {
-        return asText();
+        // 采用 JSON 格式
+        return asString();
     }
 
 }

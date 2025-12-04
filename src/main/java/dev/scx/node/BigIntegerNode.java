@@ -21,8 +21,18 @@ public record BigIntegerNode(BigInteger value) implements NumberNode {
     }
 
     @Override
+    public int asIntExact() throws ArithmeticException {
+        return value.intValueExact();
+    }
+
+    @Override
     public long asLong() {
         return value.longValue();
+    }
+
+    @Override
+    public long asLongExact() throws ArithmeticException {
+        return value.longValueExact();
     }
 
     @Override
@@ -31,12 +41,35 @@ public record BigIntegerNode(BigInteger value) implements NumberNode {
     }
 
     @Override
+    public float asFloatExact() throws ArithmeticException {
+        var f = value.floatValue();
+        if (BigDecimal.valueOf(f).toBigInteger().compareTo(value) != 0) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return f;
+    }
+
+    @Override
     public double asDouble() {
         return value.doubleValue();
     }
 
     @Override
+    public double asDoubleExact() throws ArithmeticException {
+        var d = value.doubleValue();
+        if (BigDecimal.valueOf(d).toBigInteger().compareTo(value) != 0) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return d;
+    }
+
+    @Override
     public BigInteger asBigInteger() {
+        return value;
+    }
+
+    @Override
+    public BigInteger asBigIntegerExact() {
         return value;
     }
 
@@ -46,16 +79,15 @@ public record BigIntegerNode(BigInteger value) implements NumberNode {
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return value.toString();
     }
 
     @Override
     public boolean asBoolean() {
-        return !value.equals(BigInteger.ZERO);
+        return value.compareTo(BigInteger.ZERO) != 0;
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public BigIntegerNode deepCopy() {
         return this;
@@ -63,7 +95,8 @@ public record BigIntegerNode(BigInteger value) implements NumberNode {
 
     @Override
     public String toString() {
-        return asText();
+        // 采用 JSON 格式
+        return asString();
     }
 
 }
