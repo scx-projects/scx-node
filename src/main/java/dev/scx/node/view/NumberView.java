@@ -4,6 +4,28 @@ package dev.scx.node.view;
 ///
 /// @author scx567888
 /// @version 0.0.1
-public interface NumberView extends IntView, LongView, FloatView, DoubleView, BigIntegerView, BigDecimalView {
+public interface NumberView extends   FloatView, DoubleView, BigIntegerView, BigDecimalView {
+
+    /// 转换为 int (允许丢失精度)
+    ///
+    /// @throws NumberFormatException 数字格式不正确
+    int asInt() throws NumberFormatException;
+
+    /// 转换为 int (不允许丢失精度)
+    ///
+    /// @throws NumberFormatException 数字格式不正确
+    /// @throws ArithmeticException   精度丢失
+    int asIntExact() throws NumberFormatException, ArithmeticException;
+
+    /// 转换为 long (允许丢失精度)
+    ///
+    /// @throws NumberFormatException 数字格式不正确
+    long asLong() throws NumberFormatException;
+
+    /// 转换为 long (不允许丢失精度)
+    ///
+    /// @throws NumberFormatException 数字格式不正确
+    /// @throws ArithmeticException   精度丢失
+    long asLongExact() throws NumberFormatException, ArithmeticException;
 
 }
