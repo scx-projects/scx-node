@@ -25,7 +25,7 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode, NumberView
     }
 
     @Override
-    public int asIntExact() throws  ArithmeticException {
+    public int asIntExact() throws ArithmeticException {
         return value.intValueExact();
     }
 
@@ -35,7 +35,7 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode, NumberView
     }
 
     @Override
-    public long asLongExact() throws  ArithmeticException {
+    public long asLongExact() throws ArithmeticException {
         return value.longValueExact();
     }
 
@@ -45,9 +45,12 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode, NumberView
     }
 
     @Override
-    public float asFloatExact() throws NumberFormatException, ArithmeticException {
-        // todo 精度问题
-        return value.floatValue();
+    public float asFloatExact() throws ArithmeticException {
+        var f = value.floatValue();
+        if (!BigDecimal.valueOf(f).equals(value)) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return f;
     }
 
     @Override
@@ -56,9 +59,12 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode, NumberView
     }
 
     @Override
-    public double asDoubleExact() throws NumberFormatException, ArithmeticException {
-        // todo 精度问题
-        return value.doubleValue();
+    public double asDoubleExact() throws ArithmeticException {
+        var d = value.doubleValue();
+        if (!BigDecimal.valueOf(d).equals(value)) {
+            throw new ArithmeticException("Precision loss: " + value);
+        }
+        return d;
     }
 
     @Override
@@ -86,7 +92,6 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode, NumberView
         return !value.equals(BigDecimal.ZERO);
     }
 
-    /// 值类型不可变 返回 this 即可
     @Override
     public BigDecimalNode deepCopy() {
         return this;
