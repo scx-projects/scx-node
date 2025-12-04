@@ -112,13 +112,12 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
 
             var element = field.getValue();
             // 添加 值
-            if (element instanceof ArrayNode arrayNode) {
-                sb.append(arrayNode.toString0(indentLevel + 1));
-            } else if (element instanceof ObjectNode objectNode) {
-                sb.append(objectNode.toString0(indentLevel + 1));
-            } else {
-                sb.append(element.toString());
-            }
+            var v = switch (element) {
+                case ArrayNode arrayNode -> arrayNode.toString0(indentLevel + 1);
+                case ObjectNode objectNode -> objectNode.toString0(indentLevel + 1);
+                default -> element.toString();
+            };
+            sb.append(v);
 
             // 如果不是最后一个元素, 加逗号
             if (index != size - 1) {
