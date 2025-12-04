@@ -33,7 +33,7 @@ public sealed interface NumberNode extends ValueNode permits IntNode, LongNode, 
     double asDouble();
 
     @Override
-    double asDoubleExact() throws NumberFormatException, ArithmeticException;
+    double asDoubleExact() throws ArithmeticException;
 
     @Override
     BigInteger asBigInteger();
