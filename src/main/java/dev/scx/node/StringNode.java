@@ -3,15 +3,15 @@ package dev.scx.node;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-/// TextNode
+/// StringNode
 ///
 /// @author scx567888
 /// @version 0.0.1
-public record TextNode(String value) implements ValueNode {
+public record StringNode(String value) implements ValueNode {
 
-    public TextNode {
+    public StringNode {
         if (value == null) {
-            throw new NullPointerException("TextNode value cannot be null");
+            throw new NullPointerException("StringNode value cannot be null");
         }
     }
 
@@ -46,7 +46,7 @@ public record TextNode(String value) implements ValueNode {
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return value;
     }
 
@@ -57,13 +57,13 @@ public record TextNode(String value) implements ValueNode {
 
     /// 值类型不可变 返回 this 即可
     @Override
-    public TextNode deepCopy() {
+    public StringNode deepCopy() {
         return this;
     }
 
     @Override
     public String toString() {
-        return asText();
+        return asString();
     }
 
 }

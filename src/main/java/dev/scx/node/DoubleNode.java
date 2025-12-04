@@ -42,7 +42,7 @@ public record DoubleNode(double value) implements NumberNode {
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return String.valueOf(value);
     }
 
@@ -59,7 +59,7 @@ public record DoubleNode(double value) implements NumberNode {
 
     @Override
     public String toString() {
-        return asText();
+        return asString();
     }
 
 }

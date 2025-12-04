@@ -58,7 +58,7 @@ public final class BooleanNode implements ValueNode {
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return String.valueOf(value);
     }
 
@@ -88,7 +88,7 @@ public final class BooleanNode implements ValueNode {
 
     @Override
     public String toString() {
-        return asText();
+        return asString();
     }
 
 }

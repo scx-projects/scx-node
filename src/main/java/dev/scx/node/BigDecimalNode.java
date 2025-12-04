@@ -46,7 +46,7 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode {
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return value.toString();
     }
 
@@ -63,7 +63,7 @@ public record BigDecimalNode(BigDecimal value) implements NumberNode {
 
     @Override
     public String toString() {
-        return asText();
+        return asString();
     }
 
 }

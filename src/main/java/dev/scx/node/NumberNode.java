@@ -30,7 +30,7 @@ public sealed interface NumberNode extends ValueNode permits IntNode, LongNode, 
     BigDecimal asBigDecimal();
 
     @Override
-    String asText();
+    String asString();
 
     @Override
     boolean asBoolean();

@@ -44,7 +44,7 @@ public record FloatNode(float value) implements NumberNode {
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return String.valueOf(value);
     }
 
@@ -61,7 +61,7 @@ public record FloatNode(float value) implements NumberNode {
 
     @Override
     public String toString() {
-        return asText();
+        return asString();
     }
 
 }

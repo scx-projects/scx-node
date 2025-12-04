@@ -40,7 +40,7 @@ public record LongNode(long value) implements NumberNode {
     }
 
     @Override
-    public String asText() {
+    public String asString() {
         return String.valueOf(value);
     }
 
@@ -57,7 +57,7 @@ public record LongNode(long value) implements NumberNode {
 
     @Override
     public String toString() {
-        return asText();
+        return asString();
     }
 
 }
