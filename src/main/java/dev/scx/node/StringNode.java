@@ -99,7 +99,7 @@ public record StringNode(String value) implements ValueNode {
     public String toString() {
         // 采用 JSON 格式
         // 这里不考虑复杂的转义, 只做 引号包裹.
-        return "\"" + value + "\"";
+        return "\"" + asString() + "\"";
     }
 
 }
