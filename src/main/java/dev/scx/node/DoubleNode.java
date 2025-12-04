@@ -21,9 +21,9 @@ public record DoubleNode(double value) implements NumberNode, NumberView, String
     }
 
     @Override
-    public int asIntExact() throws NumberFormatException, ArithmeticException {
-        if ((int) value != value) {
-            throw new ArithmeticException("integer overflow");
+    public int asIntExact() throws ArithmeticException {
+        if ((double) (int) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
         }
         return (int) value;
     }
@@ -34,9 +34,9 @@ public record DoubleNode(double value) implements NumberNode, NumberView, String
     }
 
     @Override
-    public long asLongExact() throws NumberFormatException, ArithmeticException {
-        if ((long) value != value) {
-            throw new ArithmeticException("integer overflow");
+    public long asLongExact() throws ArithmeticException {
+        if ((double) (long) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
         }
         return (long) value;
     }
@@ -47,9 +47,9 @@ public record DoubleNode(double value) implements NumberNode, NumberView, String
     }
 
     @Override
-    public float asFloatExact() throws NumberFormatException, ArithmeticException {
-        if ((float) value != value) {
-            throw new ArithmeticException("integer overflow");
+    public float asFloatExact() throws ArithmeticException {
+        if ((double) (float) value != value) {
+            throw new ArithmeticException("Precision loss: " + value);
         }
         return (float) value;
     }
@@ -65,12 +65,12 @@ public record DoubleNode(double value) implements NumberNode, NumberView, String
     }
 
     @Override
-    public BigInteger asBigInteger() throws NumberFormatException {
+    public BigInteger asBigInteger() {
         return BigDecimal.valueOf(value).toBigInteger();
     }
 
     @Override
-    public BigInteger asBigIntegerExact() throws NumberFormatException, ArithmeticException {
+    public BigInteger asBigIntegerExact() throws ArithmeticException {
         return BigDecimal.valueOf(value).toBigIntegerExact();
     }
 
@@ -81,7 +81,7 @@ public record DoubleNode(double value) implements NumberNode, NumberView, String
 
     @Override
     public String asString() {
-        return Double.toString(value);
+        return String.valueOf(value);
     }
 
     @Override
