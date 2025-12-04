@@ -1,7 +1,6 @@
 package dev.scx.node.test;
 
 import dev.scx.node.DoubleNode;
-import dev.scx.node.FloatNode;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
