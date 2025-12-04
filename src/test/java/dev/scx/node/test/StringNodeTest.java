@@ -12,6 +12,7 @@ public class StringNodeTest {
         test3();
         test4();
         test5();
+        test6();
     }
 
     @Test
@@ -93,6 +94,28 @@ public class StringNodeTest {
     public static void test5() {
         // 测试 正常值
         var n = new StringNode("200");
+
+        n.asInt();
+        n.asIntExact();
+        n.asLong();
+        n.asLongExact();
+        n.asFloat();
+        n.asFloatExact();
+        n.asDouble();
+        n.asDoubleExact();
+        n.asBigInteger();
+        n.asBigIntegerExact();
+        n.asBigDecimal();
+        n.asString();
+        n.asBoolean();
+        n.deepCopy();
+        n.toString();
+    }
+
+    @Test
+    public static void test6() {
+        // 测试 正常值
+        var n = new StringNode("200.0000");
 
         n.asInt();
         n.asIntExact();
