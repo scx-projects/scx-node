@@ -20,21 +20,21 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         this.elements = new ArrayList<>(initialCapacity);
     }
 
-    public void add(Node node) {
+    public void add(Node node) throws NullPointerException {
         if (node == null) {
             throw new NullPointerException("ArrayNode cannot add null");
         }
         elements.add(node);
     }
 
-    public void add(int index, Node node) {
+    public void add(int index, Node node) throws NullPointerException {
         if (node == null) {
             throw new NullPointerException("ArrayNode cannot add null");
         }
         elements.add(index, node);
     }
 
-    public Node set(int index, Node node) {
+    public Node set(int index, Node node) throws NullPointerException {
         if (node == null) {
             throw new NullPointerException("ArrayNode cannot set null");
         }

@@ -20,7 +20,7 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         this.fields = new LinkedHashMap<>(initialCapacity);
     }
 
-    public Node put(String name, Node value) {
+    public Node put(String name, Node value) throws NullPointerException {
         if (name == null) {
             throw new NullPointerException("ObjectNode cannot put null name");
         }
