@@ -9,6 +9,7 @@ public class ArrayNodeTest {
 
     public static void main(String[] args) {
         test1();
+        test2();
     }
 
     @Test
@@ -29,6 +30,20 @@ public class ArrayNodeTest {
         }
         a.clear();
         Assert.assertEquals(a.size(), 0);
+    }
+
+    @Test
+    public static void test2() {
+        var a = new ArrayNode();
+        a.add(1);
+        a.add(2);
+        a.add(3);
+        Assert.assertEquals(a.get(0), new IntNode(1));
+        Assert.assertEquals(a.get(1), new IntNode(2));
+        Assert.assertEquals(a.get(2), new IntNode(3));
+        // 索引不存在 返回 null
+        Assert.assertNull(a.get(3));
+        Assert.assertNull(a.get(-1));
     }
 
 }
