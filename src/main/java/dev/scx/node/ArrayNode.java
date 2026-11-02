@@ -219,36 +219,36 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         elements.add(index, BooleanNode.of(value));
     }
 
-    public void set(int index, int value) throws IndexOutOfBoundsException {
-        elements.set(index, new IntNode(value));
+    public Node set(int index, int value) throws IndexOutOfBoundsException {
+        return elements.set(index, new IntNode(value));
     }
 
-    public void set(int index, long value) throws IndexOutOfBoundsException {
-        elements.set(index, new LongNode(value));
+    public Node set(int index, long value) throws IndexOutOfBoundsException {
+        return elements.set(index, new LongNode(value));
     }
 
-    public void set(int index, float value) throws IndexOutOfBoundsException {
-        elements.set(index, new FloatNode(value));
+    public Node set(int index, float value) throws IndexOutOfBoundsException {
+        return elements.set(index, new FloatNode(value));
     }
 
-    public void set(int index, double value) throws IndexOutOfBoundsException {
-        elements.set(index, new DoubleNode(value));
+    public Node set(int index, double value) throws IndexOutOfBoundsException {
+        return elements.set(index, new DoubleNode(value));
     }
 
-    public void set(int index, BigInteger value) throws NullPointerException, IndexOutOfBoundsException {
-        elements.set(index, new BigIntegerNode(value));
+    public Node set(int index, BigInteger value) throws NullPointerException, IndexOutOfBoundsException {
+        return elements.set(index, new BigIntegerNode(value));
     }
 
-    public void set(int index, BigDecimal value) throws NullPointerException, IndexOutOfBoundsException {
-        elements.set(index, new BigDecimalNode(value));
+    public Node set(int index, BigDecimal value) throws NullPointerException, IndexOutOfBoundsException {
+        return elements.set(index, new BigDecimalNode(value));
     }
 
-    public void set(int index, String value) throws NullPointerException, IndexOutOfBoundsException {
-        elements.set(index, new StringNode(value));
+    public Node set(int index, String value) throws NullPointerException, IndexOutOfBoundsException {
+        return elements.set(index, new StringNode(value));
     }
 
-    public void set(int index, boolean value) throws IndexOutOfBoundsException {
-        elements.set(index, BooleanNode.of(value));
+    public Node set(int index, boolean value) throws IndexOutOfBoundsException {
+        return elements.set(index, BooleanNode.of(value));
     }
 
 }
