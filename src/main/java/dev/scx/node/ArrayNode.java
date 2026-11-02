@@ -50,8 +50,12 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         }
     }
 
-    public Node remove(int index) throws IndexOutOfBoundsException {
-        return elements.remove(index);
+    public Node remove(int index) {
+        try {
+            return elements.remove(index);
+        } catch (IndexOutOfBoundsException ignored) {
+            return null;
+        }
     }
 
     @Override
