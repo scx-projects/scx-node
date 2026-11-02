@@ -28,14 +28,14 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         elements.add(node);
     }
 
-    public void add(int index, Node node) throws NullPointerException {
+    public void add(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
             throw new NullPointerException("ArrayNode cannot add null");
         }
         elements.add(index, node);
     }
 
-    public Node set(int index, Node node) throws NullPointerException {
+    public Node set(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
             throw new NullPointerException("ArrayNode cannot set null");
         }
@@ -43,10 +43,14 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
     }
 
     public Node get(int index) {
-        return elements.get(index);
+        try {
+            return elements.get(index);
+        } catch (IndexOutOfBoundsException ignored) {
+            return null;
+        }
     }
 
-    public Node remove(int index) {
+    public Node remove(int index) throws IndexOutOfBoundsException {
         return elements.remove(index);
     }
 
