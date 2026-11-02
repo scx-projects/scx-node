@@ -17,37 +17,50 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         this.elements = new ArrayList<>();
     }
 
-    public ArrayNode(int initialCapacity) {
+    public ArrayNode(int initialCapacity) throws IllegalArgumentException {
         this.elements = new ArrayList<>(initialCapacity);
     }
 
+    /// 在末尾添加 Node.
     public void add(Node node) throws NullPointerException {
         if (node == null) {
-            throw new NullPointerException("ArrayNode cannot add null");
+            throw new NullPointerException("ArrayNode element cannot be null");
         }
         elements.add(node);
     }
 
-    public void add(int index, Node node) throws NullPointerException {
+    /// 在指定索引处插入 Node, 索引越界时抛出 [IndexOutOfBoundsException].
+    public void add(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
-            throw new NullPointerException("ArrayNode cannot add null");
+            throw new NullPointerException("ArrayNode element cannot be null");
         }
         elements.add(index, node);
     }
 
-    public Node set(int index, Node node) throws NullPointerException {
+    /// 替换指定索引处的 Node, 并返回原 Node, 索引越界时抛出 [IndexOutOfBoundsException].
+    public Node set(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
-            throw new NullPointerException("ArrayNode cannot set null");
+            throw new NullPointerException("ArrayNode element cannot be null");
         }
         return elements.set(index, node);
     }
 
+    /// 获取指定索引处的 Node, 不存在时返回 null.
     public Node get(int index) {
-        return elements.get(index);
+        try {
+            return elements.get(index);
+        } catch (IndexOutOfBoundsException ignored) {
+            return null;
+        }
     }
 
+    /// 移除并返回指定索引处的 Node, 不存在时返回 null.
     public Node remove(int index) {
-        return elements.remove(index);
+        try {
+            return elements.remove(index);
+        } catch (IndexOutOfBoundsException ignored) {
+            return null;
+        }
     }
 
     @Override
@@ -140,38 +153,102 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         return sb.toString();
     }
 
-    // ******************** 简易方法 ********************
+    // ******************** 简易方法 (这里不去刻意的维持参数异常的顺序一致性, 所以全部委托) ********************
 
     public void add(int value) {
-        elements.add(new IntNode(value));
+        add(new IntNode(value));
     }
 
     public void add(long value) {
-        elements.add(new LongNode(value));
+        add(new LongNode(value));
     }
 
     public void add(float value) {
-        elements.add(new FloatNode(value));
+        add(new FloatNode(value));
     }
 
     public void add(double value) {
-        elements.add(new DoubleNode(value));
+        add(new DoubleNode(value));
     }
 
     public void add(BigInteger value) throws NullPointerException {
-        elements.add(new BigIntegerNode(value));
+        add(new BigIntegerNode(value));
     }
 
     public void add(BigDecimal value) throws NullPointerException {
-        elements.add(new BigDecimalNode(value));
+        add(new BigDecimalNode(value));
     }
 
     public void add(String value) throws NullPointerException {
-        elements.add(new StringNode(value));
+        add(new StringNode(value));
     }
 
     public void add(boolean value) {
-        elements.add(BooleanNode.of(value));
+        add(BooleanNode.of(value));
+    }
+
+    public void add(int index, int value) throws IndexOutOfBoundsException {
+        add(index, new IntNode(value));
+    }
+
+    public void add(int index, long value) throws IndexOutOfBoundsException {
+        add(index, new LongNode(value));
+    }
+
+    public void add(int index, float value) throws IndexOutOfBoundsException {
+        add(index, new FloatNode(value));
+    }
+
+    public void add(int index, double value) throws IndexOutOfBoundsException {
+        add(index, new DoubleNode(value));
+    }
+
+    public void add(int index, BigInteger value) throws NullPointerException, IndexOutOfBoundsException {
+        add(index, new BigIntegerNode(value));
+    }
+
+    public void add(int index, BigDecimal value) throws NullPointerException, IndexOutOfBoundsException {
+        add(index, new BigDecimalNode(value));
+    }
+
+    public void add(int index, String value) throws NullPointerException, IndexOutOfBoundsException {
+        add(index, new StringNode(value));
+    }
+
+    public void add(int index, boolean value) throws IndexOutOfBoundsException {
+        add(index, BooleanNode.of(value));
+    }
+
+    public Node set(int index, int value) throws IndexOutOfBoundsException {
+        return set(index, new IntNode(value));
+    }
+
+    public Node set(int index, long value) throws IndexOutOfBoundsException {
+        return set(index, new LongNode(value));
+    }
+
+    public Node set(int index, float value) throws IndexOutOfBoundsException {
+        return set(index, new FloatNode(value));
+    }
+
+    public Node set(int index, double value) throws IndexOutOfBoundsException {
+        return set(index, new DoubleNode(value));
+    }
+
+    public Node set(int index, BigInteger value) throws NullPointerException, IndexOutOfBoundsException {
+        return set(index, new BigIntegerNode(value));
+    }
+
+    public Node set(int index, BigDecimal value) throws NullPointerException, IndexOutOfBoundsException {
+        return set(index, new BigDecimalNode(value));
+    }
+
+    public Node set(int index, String value) throws NullPointerException, IndexOutOfBoundsException {
+        return set(index, new StringNode(value));
+    }
+
+    public Node set(int index, boolean value) throws IndexOutOfBoundsException {
+        return set(index, BooleanNode.of(value));
     }
 
 }

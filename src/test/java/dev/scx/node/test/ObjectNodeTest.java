@@ -9,6 +9,7 @@ public class ObjectNodeTest {
 
     public static void main(String[] args) {
         test1();
+        test2();
     }
 
     @Test
@@ -30,6 +31,18 @@ public class ObjectNodeTest {
         }
         a.clear();
         Assert.assertEquals(a.size(), 0);
+    }
+
+    @Test
+    public static void test2() {
+        var a = new ObjectNode();
+        a.put("0", 1);
+        a.put("1", 2);
+        a.put("2", 3);
+        Assert.assertNull(a.get("4"));
+        Assert.assertThrows(NullPointerException.class, () -> {
+            a.get(null);
+        });
     }
 
 }
