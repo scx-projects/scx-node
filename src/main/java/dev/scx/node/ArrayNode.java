@@ -156,35 +156,35 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
     // ******************** 简易方法 ********************
 
     public void add(int value) {
-        add(new IntNode(value));
+        elements.add(new IntNode(value));
     }
 
     public void add(long value) {
-        add(new LongNode(value));
+        elements.add(new LongNode(value));
     }
 
     public void add(float value) {
-        add(new FloatNode(value));
+        elements.add(new FloatNode(value));
     }
 
     public void add(double value) {
-        add(new DoubleNode(value));
+        elements.add(new DoubleNode(value));
     }
 
     public void add(BigInteger value) throws NullPointerException {
-        add(new BigIntegerNode(value));
+        elements.add(new BigIntegerNode(value));
     }
 
     public void add(BigDecimal value) throws NullPointerException {
-        add(new BigDecimalNode(value));
+        elements.add(new BigDecimalNode(value));
     }
 
     public void add(String value) throws NullPointerException {
-        add(new StringNode(value));
+        elements.add(new StringNode(value));
     }
 
     public void add(boolean value) {
-        add(BooleanNode.of(value));
+        elements.add(BooleanNode.of(value));
     }
 
 }
