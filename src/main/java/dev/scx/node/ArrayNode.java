@@ -37,7 +37,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         elements.add(index, node);
     }
 
-    /// 替换并返回指定索引处的 Node, 索引越界时抛出 [IndexOutOfBoundsException].
+    /// 替换指定索引处的 Node, 并返回原 Node, 索引越界时抛出 [IndexOutOfBoundsException].
     public Node set(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
             throw new NullPointerException("ArrayNode element cannot be null");

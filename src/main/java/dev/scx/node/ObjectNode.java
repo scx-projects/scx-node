@@ -21,7 +21,7 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         this.fields = new LinkedHashMap<>(initialCapacity);
     }
 
-    /// 添加或替换并返回指定名称的 Node.
+    /// 添加或替换指定名称的 Node, 并返回原 Node.
     public Node put(String name, Node value) throws NullPointerException {
         if (name == null) {
             throw new NullPointerException("ObjectNode name cannot be null");
