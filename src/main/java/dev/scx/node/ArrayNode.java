@@ -17,7 +17,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         this.elements = new ArrayList<>();
     }
 
-    public ArrayNode(int initialCapacity) {
+    public ArrayNode(int initialCapacity) throws IllegalArgumentException{
         this.elements = new ArrayList<>(initialCapacity);
     }
 

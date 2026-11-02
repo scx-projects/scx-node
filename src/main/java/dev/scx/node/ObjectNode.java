@@ -17,7 +17,7 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         this.fields = new LinkedHashMap<>();
     }
 
-    public ObjectNode(int initialCapacity) {
+    public ObjectNode(int initialCapacity) throws IllegalArgumentException {
         this.fields = new LinkedHashMap<>(initialCapacity);
     }
 
