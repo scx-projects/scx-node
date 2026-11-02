@@ -21,7 +21,7 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         this.fields = new LinkedHashMap<>(initialCapacity);
     }
 
-    /// 添加或替换并返回指定名称的节点.
+    /// 添加或替换并返回指定名称的 Node.
     public Node put(String name, Node value) throws NullPointerException {
         if (name == null) {
             throw new NullPointerException("ObjectNode name cannot be null");
@@ -32,7 +32,7 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         return fields.put(name, value);
     }
 
-    /// 获取指定名称的节点, 不存在时返回 null.
+    /// 获取指定名称的 Node, 不存在时返回 null.
     public Node get(String name) throws NullPointerException {
         if (name == null) {
             throw new NullPointerException("ObjectNode name cannot be null");
@@ -40,7 +40,7 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         return fields.get(name);
     }
 
-    /// 移除并返回指定名称的节点, 不存在时返回 null.
+    /// 移除并返回指定名称的 Node, 不存在时返回 null.
     public Node remove(String name) throws NullPointerException {
         if (name == null) {
             throw new NullPointerException("ObjectNode name cannot be null");

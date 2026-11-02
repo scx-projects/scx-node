@@ -21,7 +21,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         this.elements = new ArrayList<>(initialCapacity);
     }
 
-    /// 在末尾添加节点.
+    /// 在末尾添加 Node.
     public void add(Node node) throws NullPointerException {
         if (node == null) {
             throw new NullPointerException("ArrayNode element cannot be null");
@@ -29,7 +29,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         elements.add(node);
     }
 
-    /// 在指定索引处插入节点, 索引越界时抛出 [IndexOutOfBoundsException].
+    /// 在指定索引处插入 Node, 索引越界时抛出 [IndexOutOfBoundsException].
     public void add(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
             throw new NullPointerException("ArrayNode element cannot be null");
@@ -37,7 +37,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         elements.add(index, node);
     }
 
-    /// 替换并返回指定索引处的节点, 索引越界时抛出 [IndexOutOfBoundsException].
+    /// 替换并返回指定索引处的 Node, 索引越界时抛出 [IndexOutOfBoundsException].
     public Node set(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
             throw new NullPointerException("ArrayNode element cannot be null");
@@ -45,7 +45,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         return elements.set(index, node);
     }
 
-    /// 获取指定索引处的节点, 不存在时返回 null.
+    /// 获取指定索引处的 Node, 不存在时返回 null.
     public Node get(int index) {
         try {
             return elements.get(index);
@@ -54,7 +54,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         }
     }
 
-    /// 移除并返回指定索引处的节点, 不存在时返回 null.
+    /// 移除并返回指定索引处的 Node, 不存在时返回 null.
     public Node remove(int index) {
         try {
             return elements.remove(index);
