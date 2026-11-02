@@ -147,60 +147,35 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
     // ******************** 简易方法 ********************
 
     public Node put(String name, int value) throws NullPointerException {
-        // 保证参数检查顺序和 put 方法一致, 下同
-        if (name == null) {
-            throw new NullPointerException("ObjectNode name cannot be null");
-        }
-        return fields.put(name, new IntNode(value));
+        return put(name, new IntNode(value));
     }
 
     public Node put(String name, long value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode name cannot be null");
-        }
-        return fields.put(name, new LongNode(value));
+        return put(name, new LongNode(value));
     }
 
     public Node put(String name, float value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode name cannot be null");
-        }
-        return fields.put(name, new FloatNode(value));
+        return put(name, new FloatNode(value));
     }
 
     public Node put(String name, double value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode name cannot be null");
-        }
-        return fields.put(name, new DoubleNode(value));
+        return put(name, new DoubleNode(value));
     }
 
     public Node put(String name, BigInteger value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode name cannot be null");
-        }
-        return fields.put(name, new BigIntegerNode(value));
+        return put(name, new BigIntegerNode(value));
     }
 
     public Node put(String name, BigDecimal value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode name cannot be null");
-        }
-        return fields.put(name, new BigDecimalNode(value));
+        return put(name, new BigDecimalNode(value));
     }
 
     public Node put(String name, String value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode name cannot be null");
-        }
-        return fields.put(name, new StringNode(value));
+        return put(name, new StringNode(value));
     }
 
     public Node put(String name, boolean value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode name cannot be null");
-        }
-        return fields.put(name, BooleanNode.of(value));
+        return put(name, BooleanNode.of(value));
     }
 
 }
