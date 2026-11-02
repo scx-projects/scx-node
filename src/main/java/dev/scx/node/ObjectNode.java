@@ -24,21 +24,27 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
     /// 添加或替换并返回指定名称的节点.
     public Node put(String name, Node value) throws NullPointerException {
         if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
+            throw new NullPointerException("ObjectNode name cannot be null");
         }
         if (value == null) {
-            throw new NullPointerException("ObjectNode cannot put null value");
+            throw new NullPointerException("ObjectNode value cannot be null");
         }
         return fields.put(name, value);
     }
 
     /// 获取指定名称的节点, 不存在时返回 null.
-    public Node get(String name) {
+    public Node get(String name) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode name cannot be null");
+        }
         return fields.get(name);
     }
 
     /// 移除并返回指定名称的节点, 不存在时返回 null.
-    public Node remove(String name) {
+    public Node remove(String name) throws NullPointerException {
+        if (name == null) {
+            throw new NullPointerException("ObjectNode name cannot be null");
+        }
         return fields.remove(name);
     }
 
@@ -141,59 +147,35 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
     // ******************** 简易方法 ********************
 
     public Node put(String name, int value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
-        }
-        return fields.put(name, new IntNode(value));
+        return put(name, new IntNode(value));
     }
 
     public Node put(String name, long value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
-        }
-        return fields.put(name, new LongNode(value));
+        return put(name, new LongNode(value));
     }
 
     public Node put(String name, float value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
-        }
-        return fields.put(name, new FloatNode(value));
+        return put(name, new FloatNode(value));
     }
 
     public Node put(String name, double value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
-        }
-        return fields.put(name, new DoubleNode(value));
+        return put(name, new DoubleNode(value));
     }
 
     public Node put(String name, BigInteger value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
-        }
-        return fields.put(name, new BigIntegerNode(value));
+        return put(name, new BigIntegerNode(value));
     }
 
     public Node put(String name, BigDecimal value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
-        }
-        return fields.put(name, new BigDecimalNode(value));
+        return put(name, new BigDecimalNode(value));
     }
 
     public Node put(String name, String value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
-        }
-        return fields.put(name, new StringNode(value));
+        return put(name, new StringNode(value));
     }
 
     public Node put(String name, boolean value) throws NullPointerException {
-        if (name == null) {
-            throw new NullPointerException("ObjectNode cannot put null name");
-        }
-        return fields.put(name, BooleanNode.of(value));
+        return put(name, BooleanNode.of(value));
     }
 
 }

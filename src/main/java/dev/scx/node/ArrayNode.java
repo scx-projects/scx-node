@@ -24,7 +24,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
     /// 在末尾添加节点.
     public void add(Node node) throws NullPointerException {
         if (node == null) {
-            throw new NullPointerException("ArrayNode cannot add null");
+            throw new NullPointerException("ArrayNode element cannot be null");
         }
         elements.add(node);
     }
@@ -32,7 +32,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
     /// 在指定索引处插入节点, 索引越界时抛出 [IndexOutOfBoundsException].
     public void add(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
-            throw new NullPointerException("ArrayNode cannot add null");
+            throw new NullPointerException("ArrayNode element cannot be null");
         }
         elements.add(index, node);
     }
@@ -40,7 +40,7 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
     /// 替换并返回指定索引处的节点, 索引越界时抛出 [IndexOutOfBoundsException].
     public Node set(int index, Node node) throws NullPointerException, IndexOutOfBoundsException {
         if (node == null) {
-            throw new NullPointerException("ArrayNode cannot set null");
+            throw new NullPointerException("ArrayNode element cannot be null");
         }
         return elements.set(index, node);
     }
@@ -156,35 +156,35 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
     // ******************** 简易方法 ********************
 
     public void add(int value) {
-        elements.add(new IntNode(value));
+        add(new IntNode(value));
     }
 
     public void add(long value) {
-        elements.add(new LongNode(value));
+        add(new LongNode(value));
     }
 
     public void add(float value) {
-        elements.add(new FloatNode(value));
+        add(new FloatNode(value));
     }
 
     public void add(double value) {
-        elements.add(new DoubleNode(value));
+        add(new DoubleNode(value));
     }
 
     public void add(BigInteger value) throws NullPointerException {
-        elements.add(new BigIntegerNode(value));
+        add(new BigIntegerNode(value));
     }
 
     public void add(BigDecimal value) throws NullPointerException {
-        elements.add(new BigDecimalNode(value));
+        add(new BigDecimalNode(value));
     }
 
     public void add(String value) throws NullPointerException {
-        elements.add(new StringNode(value));
+        add(new StringNode(value));
     }
 
     public void add(boolean value) {
-        elements.add(BooleanNode.of(value));
+        add(BooleanNode.of(value));
     }
 
 }
