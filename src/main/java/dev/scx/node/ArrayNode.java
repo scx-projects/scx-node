@@ -153,102 +153,102 @@ public final class ArrayNode implements ContainerNode, Iterable<Node> {
         return sb.toString();
     }
 
-    // ******************** 简易方法 ********************
+    // ******************** 简易方法 (这里不去刻意的维持参数异常的顺序一致性, 所以全部委托) ********************
 
     public void add(int value) {
-        elements.add(new IntNode(value));
+        add(new IntNode(value));
     }
 
     public void add(long value) {
-        elements.add(new LongNode(value));
+        add(new LongNode(value));
     }
 
     public void add(float value) {
-        elements.add(new FloatNode(value));
+        add(new FloatNode(value));
     }
 
     public void add(double value) {
-        elements.add(new DoubleNode(value));
+        add(new DoubleNode(value));
     }
 
     public void add(BigInteger value) throws NullPointerException {
-        elements.add(new BigIntegerNode(value));
+        add(new BigIntegerNode(value));
     }
 
     public void add(BigDecimal value) throws NullPointerException {
-        elements.add(new BigDecimalNode(value));
+        add(new BigDecimalNode(value));
     }
 
     public void add(String value) throws NullPointerException {
-        elements.add(new StringNode(value));
+        add(new StringNode(value));
     }
 
     public void add(boolean value) {
-        elements.add(BooleanNode.of(value));
+        add(BooleanNode.of(value));
     }
 
     public void add(int index, int value) throws IndexOutOfBoundsException {
-        elements.add(index, new IntNode(value));
+        add(index, new IntNode(value));
     }
 
     public void add(int index, long value) throws IndexOutOfBoundsException {
-        elements.add(index, new LongNode(value));
+        add(index, new LongNode(value));
     }
 
     public void add(int index, float value) throws IndexOutOfBoundsException {
-        elements.add(index, new FloatNode(value));
+        add(index, new FloatNode(value));
     }
 
     public void add(int index, double value) throws IndexOutOfBoundsException {
-        elements.add(index, new DoubleNode(value));
+        add(index, new DoubleNode(value));
     }
 
     public void add(int index, BigInteger value) throws NullPointerException, IndexOutOfBoundsException {
-        elements.add(index, new BigIntegerNode(value));
+        add(index, new BigIntegerNode(value));
     }
 
     public void add(int index, BigDecimal value) throws NullPointerException, IndexOutOfBoundsException {
-        elements.add(index, new BigDecimalNode(value));
+        add(index, new BigDecimalNode(value));
     }
 
     public void add(int index, String value) throws NullPointerException, IndexOutOfBoundsException {
-        elements.add(index, new StringNode(value));
+        add(index, new StringNode(value));
     }
 
     public void add(int index, boolean value) throws IndexOutOfBoundsException {
-        elements.add(index, BooleanNode.of(value));
+        add(index, BooleanNode.of(value));
     }
 
     public Node set(int index, int value) throws IndexOutOfBoundsException {
-        return elements.set(index, new IntNode(value));
+        return set(index, new IntNode(value));
     }
 
     public Node set(int index, long value) throws IndexOutOfBoundsException {
-        return elements.set(index, new LongNode(value));
+        return set(index, new LongNode(value));
     }
 
     public Node set(int index, float value) throws IndexOutOfBoundsException {
-        return elements.set(index, new FloatNode(value));
+        return set(index, new FloatNode(value));
     }
 
     public Node set(int index, double value) throws IndexOutOfBoundsException {
-        return elements.set(index, new DoubleNode(value));
+        return set(index, new DoubleNode(value));
     }
 
     public Node set(int index, BigInteger value) throws NullPointerException, IndexOutOfBoundsException {
-        return elements.set(index, new BigIntegerNode(value));
+        return set(index, new BigIntegerNode(value));
     }
 
     public Node set(int index, BigDecimal value) throws NullPointerException, IndexOutOfBoundsException {
-        return elements.set(index, new BigDecimalNode(value));
+        return set(index, new BigDecimalNode(value));
     }
 
     public Node set(int index, String value) throws NullPointerException, IndexOutOfBoundsException {
-        return elements.set(index, new StringNode(value));
+        return set(index, new StringNode(value));
     }
 
     public Node set(int index, boolean value) throws IndexOutOfBoundsException {
-        return elements.set(index, BooleanNode.of(value));
+        return set(index, BooleanNode.of(value));
     }
 
 }

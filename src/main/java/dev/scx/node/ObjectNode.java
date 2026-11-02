@@ -144,7 +144,7 @@ public final class ObjectNode implements ContainerNode, Iterable<Map.Entry<Strin
         return sb.toString();
     }
 
-    // ******************** 简易方法 ********************
+    // ******************** 简易方法 (这里不去刻意的维持参数异常的顺序一致性, 所以全部委托) ********************
 
     public Node put(String name, int value) throws NullPointerException {
         return put(name, new IntNode(value));
